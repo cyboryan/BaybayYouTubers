@@ -14,6 +14,7 @@ function dataTable()
 
     $("#list").show();
     $("#welcome").hide();
+    window.stop();
 }
 
 $(document).ready(function()
@@ -128,15 +129,15 @@ $(document).ready(function()
 
     channelId.forEach(function(id)
     {
-        // down
-        // AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs
-        url = "https://www.googleapis.com/youtube/v3/channels?key=&id=AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw" + id + "&part=snippet,contentDetails,statistics";
+        key1 = "AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs" // down
+        key2 = "AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw";
+        url = "https://www.googleapis.com/youtube/v3/channels?key=" + key2 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
         $.get(url, function(data){
             fetchData(data);
             bindData(id, title, totalSubscribers, totalViews, totalVideos);
-        }));
-        
+        }).catch(error =>{
+            quotaReached();
+        });
     });
-    window.stop();
 });
