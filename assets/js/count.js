@@ -107,6 +107,18 @@ $(document).ready(function()
             )
         );
     }
+    
+    function quotaReached()
+    {
+        console.log("Quota reached");
+        $("#welcome").text("");
+        $("#welcome")
+        .append($('<p>')
+            .attr('class', 'text-danger')
+            .text("We regret to inform you that the list is currently unavailable due to quota limit. It should be back at midnight GMT+8.")
+        )
+        window.stop();
+    }
 
     channelId.forEach(function(id)
     {
@@ -115,6 +127,7 @@ $(document).ready(function()
         $.get(url, function(data){
             fetchData(data);
             bindData(id, title, totalSubscribers, totalViews, totalVideos);
-        });
+        }).catch(error => console.log('403', quotaReached()));
+        
     });
 });
