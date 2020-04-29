@@ -135,7 +135,7 @@ $(document).ready(function()
         $.get(url, function(data){
             fetchData(data);
             bindData(id, title, totalSubscribers, totalViews, totalVideos);
-        }).catch(error => console.log('403', quotaReached()));
+        }));
         
     });
     window.stop();
