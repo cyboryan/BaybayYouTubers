@@ -121,7 +121,7 @@ $(document).ready(function()
         )
         .append($('<p>')
             .attr('class', 'text-danger text-center')
-            .text("The list will be back on midnight Pacific Time (PT).")
+            .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
         )
         window.stop();
     }
