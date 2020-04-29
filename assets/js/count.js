@@ -128,7 +128,9 @@ $(document).ready(function()
 
     channelId.forEach(function(id)
     {
-        url = "https://www.googleapis.com/youtube/v3/channels?key=AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs&id=" + id + "&part=snippet,contentDetails,statistics";
+        // down
+        // AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs
+        url = "https://www.googleapis.com/youtube/v3/channels?key=&id=AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw" + id + "&part=snippet,contentDetails,statistics";
 
         $.get(url, function(data){
             fetchData(data);
