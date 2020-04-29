@@ -136,4 +136,5 @@ $(document).ready(function()
         }).catch(error => console.log('403', quotaReached()));
         
     });
+    window.stop();
 });
