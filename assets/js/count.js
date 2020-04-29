@@ -114,8 +114,13 @@ $(document).ready(function()
         $("#welcome").text("");
         $("#welcome")
         .append($('<p>')
-            .attr('class', 'text-danger')
-            .text("We regret to inform you that the list is currently unavailable due to quota limit. It should be back at midnight of Pacific Time (PT)")
+            .attr('class', 'text-danger text-center mb-0')
+            .attr('style', 'font-weight:700')
+            .text("We regret to inform you that the list is currently unavailable due to quota limit.")
+        )
+        .append($('<p>')
+            .attr('class', 'text-danger text-center')
+            .text("The list will be back on midnight Pacific Time (PT).")
         )
         window.stop();
     }
