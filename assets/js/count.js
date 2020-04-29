@@ -12,8 +12,8 @@ function dataTable()
         ]
     });
 
-    $("#tableList").show();
-    $("#showListButton").hide();
+    $("#list").show();
+    $("#welcome").hide();
 }
 
 $(document).ready(function()
