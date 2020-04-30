@@ -1,3 +1,21 @@
+/**
+ * This removes sb-sidenav-toggled class on small screens, thus accessible without
+ * layout issues.
+ */
+$(window).on('resize', function() {
+    var win = $(this);
+    if (win.width() > 992) {
+
+        $('body').addClass('sb-sidenav-toggled');
+
+    } else {
+        $('body').removeClass('sb-sidenav-toggled');
+    }
+});
+
+/**
+ * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
+ */
 function dataTable()
 {
     $('#tableList').DataTable({
@@ -17,6 +35,9 @@ function dataTable()
     window.stop();
 }
 
+/**
+ * Get count
+ */
 $(document).ready(function()
 {
     var title;
@@ -63,18 +84,31 @@ $(document).ready(function()
         "UCz4TtrIdeVnNis9hQTsjY9w" // Ann Marie Augustine
     );
 
+    /**
+     * This function fetches data from the API
+     */
     function fetchData(data)
     {
+        imageLink = data.items[0].snippet.thumbnails.medium.url;
         title = data.items[0].snippet.title;
         totalSubscribers = data.items[0].statistics.subscriberCount;
         totalViews = data.items[0].statistics.viewCount;
         totalVideos = data.items[0].statistics.videoCount;
     }
     
-    function bindData(id, title, totalSubscribers, totalViews, totalVideos)
+    /**
+     * This function adds row if data fetched successfully
+     */
+    function bindData(id, imageLink, title, totalSubscribers, totalViews, totalVideos)
     {
         $("#tableList").find('tbody')
         .append($('<tr>')
+            .append($('<td>')
+                .append($('<img>')
+                    .attr('style', 'width:24px;height:24px')
+                    .attr('src', imageLink)
+                )
+            )
             .append($('<td>')
                 .append($('<p>')
                     .attr('class', '')
@@ -110,9 +144,12 @@ $(document).ready(function()
         );
     }
     
+    /**
+     * This code replaces the welcome screen if at least one data can't be loaded due to quota limit
+     * which is 10k
+     */
     function quotaReached()
     {
-        console.log("Quota reached");
         $("#welcome").text("");
         $("#welcome")
         .append($('<p>')
@@ -127,6 +164,10 @@ $(document).ready(function()
         window.stop();
     }
 
+    /**
+     * Based on the list of channels on an array, requests one-by-one the channel information and
+     * show them to the table.
+     */
     channelId.forEach(function(id)
     {
         key1 = "AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs" // down
