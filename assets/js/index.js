@@ -89,7 +89,7 @@ $(document).ready(function()
      */
     function fetchData(data)
     {
-        imageLink = data.items[0].snippet.thumbnails.medium.url;
+        //imageLink = data.items[0].snippet.thumbnails.medium.url;
         title = data.items[0].snippet.title;
         totalSubscribers = data.items[0].statistics.subscriberCount;
         totalViews = data.items[0].statistics.viewCount;
@@ -99,17 +99,10 @@ $(document).ready(function()
     /**
      * This function adds row if data fetched successfully
      */
-    function bindData(id, imageLink, title, totalSubscribers, totalViews, totalVideos)
+    function bindData(id, title, totalSubscribers, totalViews, totalVideos)
     {
         $("#tableList").find('tbody')
         .append($('<tr>')
-            .append($('<td>')
-                .append($('<img>')
-                    .attr('src', imageLink)
-                    .attr('width', '24px')
-                    .attr('height', '24px')
-                )
-            )
             .append($('<td>')
                 .append($('<p>')
                     .attr('class', '')
@@ -176,6 +169,7 @@ $(document).ready(function()
         url = "https://www.googleapis.com/youtube/v3/channels?key=" + key2 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
         $.get(url, function(data){
+            console.log(data);
             fetchData(data);
             bindData(id, title, totalSubscribers, totalViews, totalVideos);
         }).catch(error =>{
