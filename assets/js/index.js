@@ -89,7 +89,7 @@ $(document).ready(function()
      */
     function fetchData(data)
     {
-        //imageLink = data.items[0].snippet.thumbnails.medium.url;
+        imageLink = data.items[0].snippet.thumbnails.medium.url;
         title = data.items[0].snippet.title;
         totalSubscribers = data.items[0].statistics.subscriberCount;
         totalViews = data.items[0].statistics.viewCount;
@@ -99,10 +99,17 @@ $(document).ready(function()
     /**
      * This function adds row if data fetched successfully
      */
-    function bindData(id, title, totalSubscribers, totalViews, totalVideos)
+    function bindData(id, imageLink, title, totalSubscribers, totalViews, totalVideos)
     {
         $("#tableList").find('tbody')
         .append($('<tr>')
+            .append($('<td>')
+                .append($('<img>')
+                    .attr('width', '24px')
+                    .attr('height', '24px')
+                    .attr("src", imageLink)
+                )
+            )
             .append($('<td>')
                 .append($('<p>')
                     .attr('class', '')
@@ -170,9 +177,9 @@ $(document).ready(function()
 
         $.get(url, function(data){
             console.log(data);
-            
+
             fetchData(data);
-            bindData(id, title, totalSubscribers, totalViews, totalVideos);
+            bindData(id, imageLink, title, totalSubscribers, totalViews, totalVideos);
         }).catch(error =>{
             quotaReached();
         });
