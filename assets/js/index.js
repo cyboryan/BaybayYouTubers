@@ -74,7 +74,8 @@ $(document).ready(function()
         "UCOAVIUbLYCq84pdMHZZkLuw", // princess aicelle
         "UC_yDEeZQ119wW-ig92uo7rA", // jenelyn digman
         "UCnZPE5lIXRun3ca6PED-8eg", // mark film tv
-        "UCz4TtrIdeVnNis9hQTsjY9w" // Ann Marie Augustine
+        "UCz4TtrIdeVnNis9hQTsjY9w", // Ann Marie Augustine
+        "UCF2OEYeORTtCFTfmeY6GyTA" // Goods YT - gefford neil roa godoy
     );
 
     /**
