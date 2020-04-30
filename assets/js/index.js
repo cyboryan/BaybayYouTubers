@@ -170,6 +170,7 @@ $(document).ready(function()
 
         $.get(url, function(data){
             console.log(data);
+            
             fetchData(data);
             bindData(id, title, totalSubscribers, totalViews, totalVideos);
         }).catch(error =>{
