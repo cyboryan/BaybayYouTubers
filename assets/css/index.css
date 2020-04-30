@@ -1,0 +1,50 @@
+#tableList td p {
+    font-size:16px;
+    margin-top:8px;
+}
+
+.profile-photo {
+    width:32px;
+    height:32px;
+    margin:4px auto 0 auto;
+    padding:0;
+    display:block;
+    border-radius:100%;
+}
+
+.text-strong {
+    font-weight:700;
+}
+
+body {
+    background-image: url('assets/img/page.bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: auto 100%;
+}
+
+#layoutContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    flex-grow: 1;
+    min-height: 100vh;
+    top: 0px;
+}
+
+#layout {
+    display: flex;
+}
+
+@media (max-width: 900px) {
+    #contentFinal {
+        width:85vw!important;
+        display:block;
+    }
+
+    #footer-right {
+        display:none!important;
+    }      
+} 

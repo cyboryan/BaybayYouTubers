@@ -9,41 +9,16 @@
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/index.css" rel="stylesheet" type="text/css">
         <link rel="shortcut icon" type="image/png" href="assets/img/shortcut.logo.png">
-        <style>
-            #tableList td p {
-                font-size:16px;
-                margin-top:8px;
-            }
-
-            .profile-photo {
-                width:32px;
-                height:32px;
-                margin:4px auto 0 auto;
-                padding:0;
-                display:block;
-                border-radius:100%;
-            }
-
-            .text-strong {
-                font-weight:700;
-            }
-
-            body {
-                background-image: url('assets/img/page.bg.png');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: auto 100%;
-            }
-        </style>
         <title>Baybay YouTubers</title>
     </head>
-    <body class="sb-nav-fixed sb-sidenav-toggled bg-light">
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_content">
+    <body class="sb-nav-fixed bg-light">
+        <div id="layout">
+            <div id="layoutContent">
                 <main>
                     <div class="container-fluid">
-                        <div style="width:852px;display:block" class="ml-auto mr-auto">
+                        <div id="contentFinal" style="width:852px;display:block" class="ml-auto mr-auto">
                             <h1 class="mt-3 mb-3 text-center" style="display:none">Baybay YouTubers</h1>
                             <img style="display:block; height:72px; width:auto;" class="ml-auto mr-auto mb-3 mt-3" src="assets/img/header.logo.png">
                             <div id="welcome">
@@ -69,14 +44,14 @@
                 </main>
                 <footer class="py-4 mt-auto" style="background-color:#ffffffaa">
                     <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-dark"><b>Powered by YouTube Data API v3</b> &middot; Website created by <b><a href="https://www.facebook.com/officialCyboryan" target="_blank">cyboryan</a></b>, 2020 &middot; <span class="text-success">Last Updated: April 29, 2020</span></div>
-                            <div>
-                                <a href="https://www.facebook.com/BaybayYouTubers" target="_blank">Visit Us on Facebook</a>
+                        <div id="footerContent" class="d-flex align-items-center justify-content-between small">
+                            <div id="footer-left" class="text-dark"><b>Powered by YouTube Data API v3</b> &middot; Website created by <b><a href="https://www.facebook.com/officialCyboryan" target="_blank">cyboryan</a></b>, 2020 &middot; <span class="text-success">Last Updated: April 29, 2020</span></div>
+                            <div id="footer-right">
+                                <a href="https://www.facebook.com/BaybayYouTubers" target="_blank">Facebook</a>
                                 &middot;
-                                <a href="https://www.youtube.com/channel/UCXE1tDfNlHhDGV4tAwqULnA" target="_blank">Visit Us on YouTube</a>
+                                <a href="https://www.youtube.com/channel/UCXE1tDfNlHhDGV4tAwqULnA" target="_blank">YouTube</a>
                                 &middot;
-                                <a href="https://www.github.com/cyboryan" target="_blank">Webmaster's GitHub</a>
+                                <a href="https://www.github.com/cyboryan" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>

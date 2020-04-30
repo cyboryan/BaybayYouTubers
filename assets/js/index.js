@@ -2,6 +2,7 @@
  * This removes sb-sidenav-toggled class on small screens, thus accessible without
  * layout issues.
  */
+
 $(window).on('resize', function() {
     var win = $(this);
     if (win.width() > 992) {
@@ -33,6 +34,11 @@ function dataTable()
  */
 $(document).ready(function()
 {
+    var win = $(window);
+    if (win.width() > 992) {
+        $('body').addClass('sb-sidenav-toggled');
+    };
+
     var title;
     var totalViews;
     var totalVideos;
