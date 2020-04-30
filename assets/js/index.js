@@ -26,7 +26,6 @@ function dataTable()
 
     $("#list").show();
     $("#welcome").hide();
-    window.stop();
 }
 
 /**
