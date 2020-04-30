@@ -20,14 +20,7 @@ function dataTable()
 {
     $('#tableList').DataTable({
         pageLength : 5,
-        lengthMenu: [[5, 10], [5, 10]],
-        "columns": [
-            { "width": "50%" },
-            { "width": "12%" },
-            { "width": "12%" },
-            { "width": "12%" },
-            { "width": "14%" }
-        ]
+        lengthMenu: [[5, 10], [5, 10]]
     });
 
     $("#list").show();
@@ -105,14 +98,13 @@ $(document).ready(function()
         .append($('<tr>')
             .append($('<td>')
                 .append($('<img>')
-                    .attr('width', '24px')
-                    .attr('height', '24px')
+                    .attr('class', 'profile-photo ml-auto mr-auto')
                     .attr("src", imageLink)
                 )
             )
             .append($('<td>')
                 .append($('<p>')
-                    .attr('class', '')
+                    .attr('class', 'text-strong')
                     .text(title)
                 )
             )
@@ -136,7 +128,7 @@ $(document).ready(function()
             )
             .append($('<td>')
                 .append($('<a>')
-                    .attr('class', 'btn btn-primary btn-sm m-0')
+                    .attr('class', 'btn btn-primary btn-md m-0')
                     .attr('target', '_blank')
                     .attr('href', "https://www.youtube.com/channel/" + id + "?sub_confirmation=1")
                     .text("View")
@@ -176,8 +168,6 @@ $(document).ready(function()
         url = "https://www.googleapis.com/youtube/v3/channels?key=" + key2 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
         $.get(url, function(data){
-            console.log(data);
-
             fetchData(data);
             bindData(id, imageLink, title, totalSubscribers, totalViews, totalVideos);
         }).catch(error =>{
