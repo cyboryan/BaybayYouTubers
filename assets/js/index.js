@@ -80,7 +80,8 @@ $(document).ready(function()
         "UC_yDEeZQ119wW-ig92uo7rA", // jenelyn digman
         "UCnZPE5lIXRun3ca6PED-8eg", // mark film tv
         "UCz4TtrIdeVnNis9hQTsjY9w", // Ann Marie Augustine
-        "UCF2OEYeORTtCFTfmeY6GyTA" // Goods YT - gefford neil roa godoy
+        "UCF2OEYeORTtCFTfmeY6GyTA", // Goods YT - gefford neil roa godoy
+        "UCzJdoWhBz_pDQW5n-qEtLQQ" // Ron Ny
     );
 
     /**
