@@ -1,0 +1,125 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="keywords" content="baybay, baybay youtubers, youtube, youtubers, baybay city, baybay city youtubers">
+        <meta name="description" content="List of Baybay City YouTubers. To join on the list, message us on www.facebook.com/BaybayYouTubers" />
+        <meta name="author" content="cyboryan" />
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/index.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/png" href="assets/img/shortcut.logo.png">
+        <title>Baybay YouTubers</title>
+        <style>
+            #thumbnails {
+                display:grid;
+                grid-template-columns:24% 24% 24% 24%;
+                grid-gap:1%;
+            }
+        </style>
+    </head>
+    <body class="sb-nav-fixed bg-light">
+        <div id="layout">
+            <div id="layoutContent">
+                <main>
+                    <div class="container-fluid">
+                        <div id="contentFinal" style="width:852px;display:block" class="ml-auto mr-auto">
+                            <h1 class="mt-3 mb-2 text-center" style="display:none">Baybay YouTubers</h1>
+                            <img style="display:block; height:64px; width:auto;" class="ml-auto mr-auto mb-3 mt-3" src="assets/img/header.logo.png">
+                            <div id="welcome">
+                                <p class="mt-2 mb-4 text-center">This webpage will fetch the thumbnails of a YouTube Video. To get started, paste any youtube video url in the space provided below.</p>
+                                <form id="enterUrl" action="thumbnail.html">
+                                    <input id="url" name="url" type="text" class="form-control">
+                                    <button id="submit" name="submit" type="submit" class="form-control mt-2 btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <div id="thumbnails">
+
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 mt-auto" style="background-color:#ffffffaa">
+                    <div class="container-fluid">
+                        <div id="footerContent" class="d-flex align-items-center justify-content-between small">
+                            <div id="footer-left" class="text-dark"><b>Powered by YouTube Data API v3</b> &middot; Website created by <b><a href="https://www.facebook.com/officialCyboryan" target="_blank">cyboryan</a></b>, 2020 &middot; <span class="text-success">Last Updated: April 29, 2020</span></div>
+                            <div id="footer-right">
+                                <a href="https://www.facebook.com/BaybayYouTubers" target="_blank">Facebook</a>
+                                &middot;
+                                <a href="https://www.youtube.com/channel/UCXE1tDfNlHhDGV4tAwqULnA" target="_blank">YouTube</a>
+                                &middot;
+                                <a href="https://www.github.com/cyboryan" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+          
+        <script>
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var c = url.searchParams.get("url");
+
+            function youtube_parser(url){
+                var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+                var match = url.match(regExp);
+                return (match&&match[7].length==11)? match[7] : false;
+            }
+    
+            id = youtube_parser(c);
+    
+            $("#thumbnails")
+            .append($('<div>')
+                .append($('<p>')
+                    .text("maxresdefault")
+                )
+                .append($('<img>')
+                    .attr('style', 'width:100%')
+                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/maxresdefault.jpg")
+                )
+            )
+            
+            .append($('<div>')
+                .append($('<p>')
+                    .text("hqdefault")
+                )
+                .append($('<img>')
+                    .attr('style', 'width:100%')
+                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/hqdefault.jpg")
+                )
+            )
+    
+            .append($('<div>')
+                .append($('<p>')
+                    .text("mqdefault")
+                )
+                .append($('<img>')
+                    .attr('style', 'width:100%')
+                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/mqdefault.jpg")
+                )
+            )
+    
+            .append($('<div>')
+                .append($('<p>')
+                    .text("sddefault")
+                )
+                .append($('<img>')
+                    .attr('style', 'width:100%')
+                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/sddefault.jpg")
+                )
+            )
+            ;
+
+            $("main").addClass("mb-5");
+        </script>
+    </body>
+</html>
+
+
+    
