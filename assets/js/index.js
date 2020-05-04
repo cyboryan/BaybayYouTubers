@@ -15,9 +15,6 @@ function dataTable()
     $("#tableList_length").hide();
 }
 
-/**
- * Get count
- */
 $(document).ready(function()
 {
     var win = $(window);
