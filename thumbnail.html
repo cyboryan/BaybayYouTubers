@@ -22,10 +22,13 @@
                             <h1 class="mt-3 mb-2 text-center" style="display:none">Baybay YouTubers</h1>
                             <img style="display:block; height:64px; width:auto;" class="ml-auto mr-auto mb-3 mt-3" src="assets/img/header.logo.png">
                             <div id="welcome">
-                                <p class="mt-2 mb-4 text-center">This page grabs the thumbnails in different qualities from a youtube video.<br>To begin, copy and paste any youtube url in the input field below.</p>
+                                <p class="mt-2 mb-4 text-center">This page grabs the thumbnails in different qualities from a youtube video.</p>
+
+                                <p id="message" class="text-center mb-3"></p>
+
                                 <form id="enterUrl" action="thumbnail.html">
                                     <input id="url" name="url" type="text" class="form-control" placeholder="Paste the youtube url here!" required autofocus>
-                                    <button id="submit" name="submit" type="submit" class="form-control mt-2 btn btn-primary">Submit</button>
+                                    <button id="submit" name="submit" type="submit" class="form-control mt-2 btn btn-primary">Grab Thumbnails</button>
                                 </form>
                             </div>
                             <div id="thumbnails"></div>
@@ -63,9 +66,80 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
           
         <script>
-            var url_string = window.location.href;
-            var url = new URL(url_string);
-            var c = url.searchParams.get("url");
+            $("#message").text("To begin, copy and paste any youtube url in the input field below.");
+
+            $("#enterUrl").submit(function(event) {
+                event.preventDefault();
+                var url = $("#url").val();
+                id = youtube_parser(url);
+
+                message = $("#message");
+                $("#submit").removeClass("btn-primary");
+                $("#submit").addClass("btn-secondary");
+                $("#submit").attr("disabled", "");
+                
+
+                $("#thumbnails").text("");
+
+                message.addClass("flash");
+                message.text("Successfully grabbed thumbnails. You can now copy these images for posting.");
+
+                setInterval(function(){
+                    message.text("To begin, copy and paste any youtube url in the input field below.");
+                    message.removeClass("flash");
+                    $("#submit").removeClass("btn-secondary");
+                    $("#submit").addClass("btn-primary");
+                    $("#submit").removeAttr("disabled");
+                },10000);
+
+                $("#thumbnails")
+                .append($('<div>')
+                    .append($('<p>')
+                        .attr("class", "text-center")
+                        .text("Maximum Quality")
+                    )
+                    .append($('<img>')
+                        .attr('style', 'width:100%')
+                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/maxresdefault.jpg")
+                    )
+                )
+                .append($('<div>')
+                    .append($('<p>')
+                        .attr("class", "text-center")
+                        .text("High Quality")
+                    )
+                    .append($('<img>')
+                        .attr('style', 'width:100%')
+                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/hqdefault.jpg")
+                    )
+                )
+                .append($('<div>')
+                    .append($('<p>')
+                        .attr("class", "text-center")
+                        .text("Medium Quality")
+                    )
+                    .append($('<img>')
+                        .attr('style', 'width:100%')
+                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/mqdefault.jpg")
+                    )
+                )
+                .append($('<div>')
+                    .append($('<p>')
+                        .attr("class", "text-center")
+                        .text("Standard Quality")
+                    )
+                    .append($('<img>')
+                        .attr('style', 'width:100%')
+                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/sddefault.jpg")
+                    )
+                );
+
+                $("main").addClass("mb-5");
+            });
+
+            // var url_string = window.location.href;
+            // var url = new URL(url_string);
+            // var c = url.searchParams.get("url");
 
             function youtube_parser(url){
                 var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -73,60 +147,7 @@
                 return (match&&match[7].length==11)? match[7] : false;
             }
     
-            id = youtube_parser(c);
-    
-            $("#thumbnails")
-            .before($("<p>")
-                .attr("class", "text-center mt-4 mb-4")
-                .append($("<span>")
-                    .attr("class", "text-success")
-                    .text("Successfully grabbed thumbnails. You can now copy these images for posting.")
-                )    
-            );
-
-            $("#thumbnails")
-            .append($('<div>')
-                .append($('<p>')
-                    .attr("class", "text-center")
-                    .text("Maximum Quality")
-                )
-                .append($('<img>')
-                    .attr('style', 'width:100%')
-                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/maxresdefault.jpg")
-                )
-            )
-            .append($('<div>')
-                .append($('<p>')
-                    .attr("class", "text-center")
-                    .text("High Quality")
-                )
-                .append($('<img>')
-                    .attr('style', 'width:100%')
-                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/hqdefault.jpg")
-                )
-            )
-            .append($('<div>')
-                .append($('<p>')
-                    .attr("class", "text-center")
-                    .text("Medium Quality")
-                )
-                .append($('<img>')
-                    .attr('style', 'width:100%')
-                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/mqdefault.jpg")
-                )
-            )
-            .append($('<div>')
-                .append($('<p>')
-                    .attr("class", "text-center")
-                    .text("Standard Quality")
-                )
-                .append($('<img>')
-                    .attr('style', 'width:100%')
-                    .attr("src", "https://i1.ytimg.com/vi/" + id + "/sddefault.jpg")
-                )
-            );
-
-            $("main").addClass("mb-5");
+            // id = youtube_parser(c);
         </script>
     </body>
 </html>
