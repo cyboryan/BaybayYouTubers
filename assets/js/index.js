@@ -1,20 +1,4 @@
 /**
- * This removes sb-sidenav-toggled class on small screens, thus accessible without
- * layout issues.
- */
-
-$(window).on('resize', function() {
-    var win = $(this);
-    if (win.width() > 992) {
-
-        $('body').addClass('sb-sidenav-toggled');
-
-    } else {
-        $('body').removeClass('sb-sidenav-toggled');
-    }
-});
-
-/**
  * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
  */
 function dataTable()
@@ -45,6 +29,15 @@ $(document).ready(function()
     var totalViews;
     var totalVideos;
     var totalSubscribers;
+    /**
+     * This removes sb-sidenav-toggled class on small screens, thus accessible without
+     * layout issues.
+     */
+    $(window).on('resize', function() {
+        var win = $(this);
+        if (win.width() > 992) $('body').addClass('sb-sidenav-toggled');
+        else $('body').removeClass('sb-sidenav-toggled');
+    });
 
     // list down channels here to be information grabbed
     var channelId = new Array(
