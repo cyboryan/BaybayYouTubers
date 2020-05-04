@@ -21,7 +21,7 @@ function dataTable()
 {
     $('#tableList').DataTable({
         pageLength : 5,
-        lengthMenu: [[5, 10], [5, 10]]
+        lengthMenu: [[5], [5]]
     });
 
     $("#list").show();
