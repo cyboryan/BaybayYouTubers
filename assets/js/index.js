@@ -17,15 +17,13 @@ function dataTable()
 
 $(document).ready(function()
 {
+    /**
+     * If screen width more than 992px on start, add class to avoid layout issues
+     * Still finding a fix on this though :<
+     */
     var win = $(window);
-    if (win.width() > 992) {
-        $('body').addClass('sb-sidenav-toggled');
-    };
+    if (win.width() > 992) $('body').addClass('sb-sidenav-toggled');
 
-    var title;
-    var totalViews;
-    var totalVideos;
-    var totalSubscribers;
     /**
      * This removes sb-sidenav-toggled class on small screens, thus accessible without
      * layout issues.
@@ -35,6 +33,9 @@ $(document).ready(function()
         if (win.width() > 992) $('body').addClass('sb-sidenav-toggled');
         else $('body').removeClass('sb-sidenav-toggled');
     });
+
+    // Initialize youtuber data variables
+    var name, totalViews, totalVideos, totalSubscribers;
 
     // list down channels here to be information grabbed
     var channelId = new Array(
@@ -158,7 +159,7 @@ $(document).ready(function()
     }
 
     /**
-     * Based on the list of channels on an array, requests one-by-one the channel information and
+     * Based on the list of channels on an array, requests one-by-one the channel data and
      * show them to the table.
      */
     channelId.forEach(function(id)
