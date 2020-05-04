@@ -95,6 +95,11 @@ $(document).ready(function()
      */
     function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos)
     {
+        // Maximum YouTuber Name Length
+        var maxLength = 25;
+
+        if(name.length > maxLength) name = name.substr(0, maxLength) + "...";
+
         $("#tableList").find('tbody')
         .append($('<tr>')
             .append($('<td>')
@@ -168,10 +173,12 @@ $(document).ready(function()
         key2 = "AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw";
         url = "https://www.googleapis.com/youtube/v3/channels?key=" + key2 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
-        $.get(url, function(data){
+        $.get( url, {} )
+        .done(function( data ) {
             fetchData(data);
-        }).catch(error =>{
             bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos);
+        })
+        .fail(function() {
             quotaReached();
         });
     });
