@@ -76,46 +76,55 @@
             id = youtube_parser(c);
     
             $("#thumbnails")
+            .before($("<p>")
+                .attr("class", "text-center mt-4 mb-4")
+                .append($("<span>")
+                    .attr("class", "text-success")
+                    .text("Successfully grabbed thumbnails. You can now copy these images for posting.")
+                )    
+            );
+
+            $("#thumbnails")
             .append($('<div>')
                 .append($('<p>')
-                    .text("maxresdefault")
+                    .attr("class", "text-center")
+                    .text("Maximum Quality")
                 )
                 .append($('<img>')
                     .attr('style', 'width:100%')
                     .attr("src", "https://i1.ytimg.com/vi/" + id + "/maxresdefault.jpg")
                 )
             )
-            
             .append($('<div>')
                 .append($('<p>')
-                    .text("hqdefault")
+                    .attr("class", "text-center")
+                    .text("High Quality")
                 )
                 .append($('<img>')
                     .attr('style', 'width:100%')
                     .attr("src", "https://i1.ytimg.com/vi/" + id + "/hqdefault.jpg")
                 )
             )
-    
             .append($('<div>')
                 .append($('<p>')
-                    .text("mqdefault")
+                    .attr("class", "text-center")
+                    .text("Medium Quality")
                 )
                 .append($('<img>')
                     .attr('style', 'width:100%')
                     .attr("src", "https://i1.ytimg.com/vi/" + id + "/mqdefault.jpg")
                 )
             )
-    
             .append($('<div>')
                 .append($('<p>')
-                    .text("sddefault")
+                    .attr("class", "text-center")
+                    .text("Standard Quality")
                 )
                 .append($('<img>')
                     .attr('style', 'width:100%')
                     .attr("src", "https://i1.ytimg.com/vi/" + id + "/sddefault.jpg")
                 )
-            )
-            ;
+            );
 
             $("main").addClass("mb-5");
         </script>
