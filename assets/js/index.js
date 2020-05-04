@@ -24,8 +24,11 @@ function dataTable()
         lengthMenu: [[5], [5]]
     });
 
+    $('#logo').attr("style", "display:block; height:48px; width:auto;");
+
     $("#list").show();
     $("#welcome").hide();
+    $("#tableList_length").hide();
 }
 
 /**
