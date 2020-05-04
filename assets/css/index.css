@@ -17,7 +17,7 @@
 }
 
 body {
-    background-image: url('assets/img/page.bg.png');
+    background-image: url('../img/page.bg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: auto 100%;
