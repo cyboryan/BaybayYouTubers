@@ -1,4 +1,12 @@
 /**
+ * Baybay YouTubers - List
+ * index.js
+ * @author Graeme Xyber Pastoril / cyboryan
+ * @link cyboryan.github.io
+ */
+
+
+/**
  * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
  */
 function dataTable()
@@ -153,7 +161,11 @@ $(document).ready(function()
     // Initialize youtuber data variables
     var name, totalViews, totalVideos, totalSubscribers;
 
-    // list down channels here to be information grabbed
+    /**
+     * Here are the Channel IDs of the YouTubers. With this,
+     * we can load their channel info easily with the help
+     * of the YouTube Data API V3
+     */
     var channelId = new Array(
         "UC37BgAsDXAuoKhQEzGbDemw", // cyboryan
         "UCkeY7_-SaiLOzgCPIISpseQ", // liza ann mae guinocor
