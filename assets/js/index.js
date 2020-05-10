@@ -145,16 +145,14 @@ $(document).ready(function()
      * If screen width more than 992px on start, add class to avoid layout issues
      * Still finding a fix on this though :<
      */
-    var win = $(window);
-    if (win.width() > 992) $('body').addClass('sb-sidenav-toggled');
+    if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
 
     /**
      * This removes sb-sidenav-toggled class on small screens, thus accessible without
      * layout issues.
      */
     $(window).on('resize', function() {
-        var win = $(this);
-        if (win.width() > 992) $('body').addClass('sb-sidenav-toggled');
+        if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
         else $('body').removeClass('sb-sidenav-toggled');
     });
 
