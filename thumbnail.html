@@ -30,7 +30,7 @@
                             <div id="welcome">
                                 <p class="mt-2 mb-4 text-center">This page grabs the thumbnails in different qualities from a youtube video.</p>
 
-                                <p id="message" class="text-center mb-3"></p>
+                                <p id="message" class="text-center mb-3">To begin, copy and paste any youtube url in the input field below.</p>
 
                                 <form id="enterUrl" action="thumbnail.html" autocomplete="off">
                                     <input id="url" name="url" type="text" class="form-control" placeholder="Paste the youtube url here!" required autofocus>
@@ -69,92 +69,8 @@
         </div>
 
         <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-          
-        <script>
-            $("#message").text("To begin, copy and paste any youtube url in the input field below.");
-
-            $("#enterUrl").submit(function(event) {
-                event.preventDefault();
-                var url = $("#url").val();
-                id = youtube_parser(url);
-
-                message = $("#message");
-                $("#submit").removeClass("btn-primary");
-                $("#submit").addClass("btn-secondary");
-                $("#submit").attr("disabled", "");
-                
-
-                $("#thumbnails").text("");
-
-                message.addClass("flash");
-                message.text("Successfully grabbed thumbnails. You can now copy these images for posting.");
-
-                setInterval(function(){
-                    message.text("To begin, copy and paste any youtube url in the input field below.");
-                    message.removeClass("flash");
-                    $("#submit").removeClass("btn-secondary");
-                    $("#submit").addClass("btn-primary");
-                    $("#submit").removeAttr("disabled");
-                },10000);
-
-                $("#thumbnails")
-                .append($('<div>')
-                    .append($('<p>')
-                        .attr("class", "text-center")
-                        .text("Maximum Quality")
-                    )
-                    .append($('<img>')
-                        .attr('style', 'width:100%')
-                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/maxresdefault.jpg")
-                    )
-                )
-                .append($('<div>')
-                    .append($('<p>')
-                        .attr("class", "text-center")
-                        .text("High Quality")
-                    )
-                    .append($('<img>')
-                        .attr('style', 'width:100%')
-                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/hqdefault.jpg")
-                    )
-                )
-                .append($('<div>')
-                    .append($('<p>')
-                        .attr("class", "text-center")
-                        .text("Medium Quality")
-                    )
-                    .append($('<img>')
-                        .attr('style', 'width:100%')
-                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/mqdefault.jpg")
-                    )
-                )
-                .append($('<div>')
-                    .append($('<p>')
-                        .attr("class", "text-center")
-                        .text("Standard Quality")
-                    )
-                    .append($('<img>')
-                        .attr('style', 'width:100%')
-                        .attr("src", "https://i1.ytimg.com/vi/" + id + "/sddefault.jpg")
-                    )
-                );
-
-                $("main").addClass("mb-5");
-            });
-
-            // var url_string = window.location.href;
-            // var url = new URL(url_string);
-            // var c = url.searchParams.get("url");
-
-            function youtube_parser(url){
-                var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-                var match = url.match(regExp);
-                return (match&&match[7].length==11)? match[7] : false;
-            }
-    
-            // id = youtube_parser(c);
-        </script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>   
+        <script src="assets/js/thumbnail.js"></script>
     </body>
 </html>
 
