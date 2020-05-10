@@ -16,6 +16,14 @@ function dataTable()
 }
 
 /**
+ * Enable's the showlist button
+ */
+function enableButton()
+{
+    $("#showListButton").removeAttr("disabled").text("Show list of YouTubers");
+}
+
+/**
  * This code replaces the welcome screen if at least one data can't be loaded due to quota limit
  * which is 10k
  */
@@ -120,6 +128,11 @@ function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos
  */
 $(document).ready(function()
 {
+    /**
+     * Delay enabling of button for 3 seconds to successfully load all youtubers on the background
+     */
+    setInterval(function() { enableButton() }, 3000);
+
     /**
      * If screen width more than 992px on start, add class to avoid layout issues
      * Still finding a fix on this though :<
