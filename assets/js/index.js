@@ -15,6 +15,109 @@ function dataTable()
     $("#tableList_length").hide();
 }
 
+/**
+ * This code replaces the welcome screen if at least one data can't be loaded due to quota limit
+ * which is 10k
+ */
+function quotaReached()
+{
+    $("#welcome").text("");
+    $("#welcome")
+    .append($('<p>')
+        .attr('class', 'text-danger text-center mb-0')
+        .attr('style', 'font-weight:700')
+        .text("We regret to inform you that the list is currently unavailable due to quota limit.")
+    )
+    .append($('<p>')
+        .attr('class', 'text-danger text-center')
+        .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
+    )
+    window.stop();
+}
+
+/**
+ * This function fetches data from the API
+ * and pass to the initiated variables
+ * 
+ * @param {JSON} data
+ */
+function fetchData(data)
+{
+    imageLink = data.items[0].snippet.thumbnails.medium.url;
+    name = data.items[0].snippet.title;
+    totalSubscribers = data.items[0].statistics.subscriberCount;
+    totalViews = data.items[0].statistics.viewCount;
+    totalVideos = data.items[0].statistics.videoCount;
+}
+
+/**
+ * This function adds row if data fetched successfully
+ * 
+ * @param {String} id Channel ID of YouTuber
+ * @param {String} imageLink Link of Display Profile
+ * @param {String} name Display Name of YouTuber
+ * @param {Number} totalSubscribers
+ * @param {Number} totalViews
+ * @param {Number} totalVideos 
+ */
+function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos)
+{
+    /**
+     * If String Length of YouTuber's Display Name more than
+     * 25 characters, it must be cutted off and replace
+     * with continution ' ... '
+     */
+    if(name.length > 25) name = name.substr(0, 25) + "...";
+
+    // Create and supply row for every data
+    $("#tableList").find('tbody')
+    .append($('<tr>')
+        .append($('<td>')
+            .append($('<img>')
+                .attr('class', 'profile-photo ml-auto mr-auto')
+                .attr("src", imageLink)
+            )
+        )
+        .append($('<td>')
+            .append($('<p>')
+                .attr('class', 'text-strong')
+                .text(name)
+            )
+        )
+        .append($('<td>')
+            .append($('<p>')
+                .attr('class', 'text-right')
+                .text(totalVideos)
+            )
+        )
+        .append($('<td>')
+            .append($('<p>')
+                .attr('class', 'text-right')
+                .text(totalViews)
+            )
+        )
+        .append($('<td>')
+            .append($('<p>')
+                .attr('class', 'text-right')
+                .text(totalSubscribers)
+            )
+        )
+        .append($('<td>')
+            .append($('<a>')
+                .attr('class', 'btn btn-primary btn-md m-0')
+                .attr('target', '_blank')
+                .attr('href', "https://www.youtube.com/channel/" + id + "?sub_confirmation=1")
+                .text("View")
+            )
+        )
+    );
+}
+
+//...
+
+/**
+ * Execute the ff if the document is ready
+ */
 $(document).ready(function()
 {
     /**
@@ -77,91 +180,6 @@ $(document).ready(function()
         "UCF2OEYeORTtCFTfmeY6GyTA", // Goods YT - gefford neil roa godoy
         "UCzJdoWhBz_pDQW5n-qEtLQQ" // Ron Ny
     );
-
-    /**
-     * This function fetches data from the API
-     */
-    function fetchData(data)
-    {
-        imageLink = data.items[0].snippet.thumbnails.medium.url;
-        name = data.items[0].snippet.title;
-        totalSubscribers = data.items[0].statistics.subscriberCount;
-        totalViews = data.items[0].statistics.viewCount;
-        totalVideos = data.items[0].statistics.videoCount;
-    }
-    
-    /**
-     * This function adds row if data fetched successfully
-     */
-    function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos)
-    {
-        // Maximum YouTuber Name Length
-        var maxLength = 25;
-
-        if(name.length > maxLength) name = name.substr(0, maxLength) + "...";
-
-        $("#tableList").find('tbody')
-        .append($('<tr>')
-            .append($('<td>')
-                .append($('<img>')
-                    .attr('class', 'profile-photo ml-auto mr-auto')
-                    .attr("src", imageLink)
-                )
-            )
-            .append($('<td>')
-                .append($('<p>')
-                    .attr('class', 'text-strong')
-                    .text(name)
-                )
-            )
-            .append($('<td>')
-                .append($('<p>')
-                    .attr('class', 'text-right')
-                    .text(totalVideos)
-                )
-            )
-            .append($('<td>')
-                .append($('<p>')
-                    .attr('class', 'text-right')
-                    .text(totalViews)
-                )
-            )
-            .append($('<td>')
-                .append($('<p>')
-                    .attr('class', 'text-right')
-                    .text(totalSubscribers)
-                )
-            )
-            .append($('<td>')
-                .append($('<a>')
-                    .attr('class', 'btn btn-primary btn-md m-0')
-                    .attr('target', '_blank')
-                    .attr('href', "https://www.youtube.com/channel/" + id + "?sub_confirmation=1")
-                    .text("View")
-                )
-            )
-        );
-    }
-    
-    /**
-     * This code replaces the welcome screen if at least one data can't be loaded due to quota limit
-     * which is 10k
-     */
-    function quotaReached()
-    {
-        $("#welcome").text("");
-        $("#welcome")
-        .append($('<p>')
-            .attr('class', 'text-danger text-center mb-0')
-            .attr('style', 'font-weight:700')
-            .text("We regret to inform you that the list is currently unavailable due to quota limit.")
-        )
-        .append($('<p>')
-            .attr('class', 'text-danger text-center')
-            .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
-        )
-        window.stop();
-    }
 
     /**
      * Based on the list of channels on an array, requests one-by-one the channel data and
