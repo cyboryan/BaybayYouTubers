@@ -156,8 +156,6 @@ $(document).ready(function()
         else $('body').removeClass('sb-sidenav-toggled');
     });
 
-    // Initialize youtuber data variables
-    var name, totalViews, totalVideos, totalSubscribers;
 
     /**
      * Here are the Channel IDs of the YouTubers. With this,
