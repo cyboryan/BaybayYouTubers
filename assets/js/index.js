@@ -137,11 +137,6 @@ function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos
 $(document).ready(function()
 {
     /**
-     * Delay enabling of button for 3 seconds to successfully load all youtubers on the background
-     */
-    setInterval(function() { enableButton() }, 3000);
-
-    /**
      * If screen width more than 992px on start, add class to avoid layout issues
      * Still finding a fix on this though :<
      */
@@ -175,4 +170,9 @@ $(document).ready(function()
             quotaReached();
         });
     });
+
+    /**
+     * Delay enabling of button for 3 seconds to successfully load all youtubers on the background
+     */
+    setInterval(function() { enableButton() }, 3000);
 });
