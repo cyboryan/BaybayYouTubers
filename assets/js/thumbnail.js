@@ -107,7 +107,7 @@ function isOnline(status, message = $("#message"), submit = $("#submit")) {
                 message.removeClass("bg-danger");
                 message.text("Yey! You're back online! :>").addClass("bg-success");
                 submit.removeClass("btn-secondary btn-warning").addClass("btn-primary").removeAttr("disabled");
-                setInterval(function() {
+                setTimeout(function() {
                     loadMessage(false);
                     message.removeClass("bg-success text-light");
                 }, 5000 );
@@ -134,5 +134,5 @@ $("#enterUrl").submit(function(event) {
     event.preventDefault();
     loadImages(youtube_parser($("#url").val()))
     loadMessage(true);
-    setInterval(function() { loadMessage(false) }, 10000);
+    setTimeout(function() { loadMessage(false) }, 10000);
 });
