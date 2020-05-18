@@ -157,7 +157,7 @@ $(document).ready(function()
      */
     channelId.forEach(function(id)
     {
-        key1 = "AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs" // down
+        key1 = "AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs"; // down
         key2 = "AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw";
         url = "https://www.googleapis.com/youtube/v3/channels?key=" + key1 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
