@@ -23,6 +23,7 @@ function dataTable()
         $("#list").show();
         $("#welcome").hide();
         $("#tableList_length").hide();
+        successAudio.play();
     }
 }
 
@@ -45,6 +46,7 @@ function quotaReached()
             .attr('class', 'text-danger text-center')
             .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
         )
+        failedAudio.play();
     }
 }
 

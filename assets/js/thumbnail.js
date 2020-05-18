@@ -104,6 +104,7 @@ function isOnline(status, message = $("#message"), submit = $("#submit")) {
             type: "GET",
             url: "thumbnail.html",
             success: function(msg){
+                successAudio.play();
                 message.removeClass("bg-danger");
                 message.text("Yey! You're back online! :>").addClass("bg-success");
                 submit.removeClass("btn-secondary btn-warning").addClass("btn-primary").removeAttr("disabled");
@@ -114,6 +115,7 @@ function isOnline(status, message = $("#message"), submit = $("#submit")) {
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 if(textStatus == 'timeout') {
+                    failedAudio.play();
                     message.text("Check your internet connection.").addClass("bg-warning text-light").removeClass("bg-success bg-danger");
                 }
             }
@@ -121,6 +123,7 @@ function isOnline(status, message = $("#message"), submit = $("#submit")) {
         
         return 0;
     }
+    failedAudio.play();
     message.text("Aw, you went offline. You can't grab thumbnails with this :<").addClass("bg-danger text-light").remove("bg-warning bg-success");
     submit.removeClass("btn-primary").addClass("btn-secondary").attr("disabled", "");
 }
@@ -131,6 +134,7 @@ window.addEventListener('offline', () => isOnline(false));
 
 // Execute the ff on submitting url
 $("#enterUrl").submit(function(event) {
+    successAudio.play();
     event.preventDefault();
     loadImages(youtube_parser($("#url").val()))
     loadMessage(true);
