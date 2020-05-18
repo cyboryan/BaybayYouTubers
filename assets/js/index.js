@@ -11,24 +11,19 @@
  */
 function dataTable()
 {
-    $('#tableList').DataTable({
-        pageLength : 5,
-        lengthMenu: [[5], [5]]
-    });
-
-    $('#logo').attr("style", "display:block; height:48px; width:auto;");
-
-    $("#list").show();
-    $("#welcome").hide();
-    $("#tableList_length").hide();
-}
-
-/**
- * Enable's the showlist button
- */
-function enableButton()
-{
-    $("#showListButton").removeAttr("disabled").text("Show list of YouTubers");
+    if(quotaError < 1)
+    {
+        $('#tableList').DataTable({
+            pageLength : 5,
+            lengthMenu: [[5], [5]]
+        });
+    
+        $('#logo').attr("style", "display:block; height:48px; width:auto;");
+    
+        $("#list").show();
+        $("#welcome").hide();
+        $("#tableList_length").hide();
+    }
 }
 
 /**
@@ -37,18 +32,20 @@ function enableButton()
  */
 function quotaReached()
 {
-    $("#welcome").text("");
-    $("#welcome")
-    .append($('<p>')
-        .attr('class', 'text-danger text-center mb-0')
-        .attr('style', 'font-weight:700')
-        .text("We regret to inform you that the list is currently unavailable due to quota limit.")
-    )
-    .append($('<p>')
-        .attr('class', 'text-danger text-center')
-        .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
-    )
-    window.stop();
+    if(quotaError == 1)
+    {
+        $("#welcome").text("");
+        $("#welcome")
+        .append($('<p>')
+            .attr('class', 'text-danger text-center mb-0')
+            .attr('style', 'font-weight:700')
+            .text("We regret to inform you that the list is currently unavailable due to quota limit.")
+        )
+        .append($('<p>')
+            .attr('class', 'text-danger text-center')
+            .text("The list will be back on 3:00 pm Philippine Time (GMT+8) after quota reset.")
+        )
+    }
 }
 
 /**
@@ -152,6 +149,11 @@ $(document).ready(function()
     });
 
     /**
+     * This count ensures that the dataTable() won't be loaded if it counted at least 1
+     */
+    quotaError = 0;
+
+    /**
      * Based on the list of channels on an array, requests one-by-one the channel data and
      * show them to the table.
      */
@@ -168,11 +170,17 @@ $(document).ready(function()
         })
         .fail(function() {
             quotaReached();
+            quotaError++;
         });
     });
 
     /**
-     * Delay enabling of button for 3 seconds to successfully load all youtubers on the background
+     * Delay enabling of button for 7 seconds to successfully load all youtubers on the background
      */
-    setInterval(function() { enableButton() }, 3000);
+    time = 7;
+    setInterval(function(){
+        if(time == 0) dataTable();
+        time--;
+        $('#time').text(time);
+    }, 1000)
 });
