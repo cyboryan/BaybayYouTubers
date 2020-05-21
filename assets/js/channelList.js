@@ -41,5 +41,6 @@ channelId = new Array(
     "UCz4TtrIdeVnNis9hQTsjY9w", // Ann Marie Augustine
     "UCF2OEYeORTtCFTfmeY6GyTA", // Goods YT - gefford neil roa godoy
     "UCzJdoWhBz_pDQW5n-qEtLQQ", // Ron Ny
-    "UCIWcVeoHS35gu9ytCEi73jg" // Baybay Pakatok
+    "UCIWcVeoHS35gu9ytCEi73jg", // Baybay Pakatok
+    "UCYDLRMsCqs1D1-uJfNi6dUQ" // Ang Maharlika (from Super Miko)
 );
