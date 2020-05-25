@@ -42,5 +42,6 @@ channelId = new Array(
     "UCF2OEYeORTtCFTfmeY6GyTA", // Goods YT - gefford neil roa godoy
     "UCzJdoWhBz_pDQW5n-qEtLQQ", // Ron Ny
     "UCIWcVeoHS35gu9ytCEi73jg", // Baybay Pakatok
-    "UCYDLRMsCqs1D1-uJfNi6dUQ" // Ang Maharlika (from Super Miko)
+    "UCYDLRMsCqs1D1-uJfNi6dUQ", // Ang Maharlika (from Super Miko)
+    "UCHzHKGU3WsNuHJGw_z3KBGg" // Denzel Clavecillas - 2020/05/26
 );
