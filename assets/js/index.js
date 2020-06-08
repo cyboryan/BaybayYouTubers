@@ -17,6 +17,8 @@ var hiddenChannels = 0;
  */
 var quotaError = 0;
 
+/*********** Code block for resizing of page ***********/
+
 /**
  * If screen width more than 992px on start, add class to avoid layout issues
  * Still finding a fix on this though :<
@@ -31,6 +33,8 @@ $(window).on('resize', function() {
     if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
     else $('body').removeClass('sb-sidenav-toggled');
 });
+
+/*********** Functions for this page ********************/
 
 /**
  * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
