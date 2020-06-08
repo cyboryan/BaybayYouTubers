@@ -11,6 +11,21 @@
 var hiddenChannels = 0;
 
 /**
+ * If screen width more than 992px on start, add class to avoid layout issues
+ * Still finding a fix on this though :<
+ */
+if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
+
+/**
+ * This removes sb-sidenav-toggled class on small screens, thus accessible without
+ * layout issues.
+ */
+$(window).on('resize', function() {
+    if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
+    else $('body').removeClass('sb-sidenav-toggled');
+});
+
+/**
  * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
  */
 function dataTable()
@@ -159,21 +174,6 @@ function showNumberOfHiddenChannels()
  */
 $(document).ready(function()
 {
-    /**
-     * If screen width more than 992px on start, add class to avoid layout issues
-     * Still finding a fix on this though :<
-     */
-    if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
-
-    /**
-     * This removes sb-sidenav-toggled class on small screens, thus accessible without
-     * layout issues.
-     */
-    $(window).on('resize', function() {
-        if ($(window).width() > 992) $('body').addClass('sb-sidenav-toggled');
-        else $('body').removeClass('sb-sidenav-toggled');
-    });
-
     /**
      * This count ensures that the dataTable() won't be loaded if it counted at least 1
      */
