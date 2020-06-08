@@ -5,10 +5,17 @@
  * @link cyboryan.github.io
  */
 
+/********* Initialization of global variables **********/
+
 /**
- * Initialization of global variables
+ * Counts the number of hidden channels because of blank content
  */
 var hiddenChannels = 0;
+
+/**
+ * This count ensures that the dataTable() won't be loaded if it counted at least 1
+ */
+var quotaError = 0;
 
 /**
  * If screen width more than 992px on start, add class to avoid layout issues
@@ -174,11 +181,6 @@ function showNumberOfHiddenChannels()
  */
 $(document).ready(function()
 {
-    /**
-     * This count ensures that the dataTable() won't be loaded if it counted at least 1
-     */
-    quotaError = 0;
-
     /**
      * Based on the list of channels on an array, requests one-by-one the channel data and
      * show them to the table.
