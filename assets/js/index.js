@@ -175,7 +175,7 @@ function showNumberOfHiddenChannels()
         $("#tableList").after($("<p>")
             .attr('class', 'mt-2 text-center')
             .attr('style', 'font-size:12px')
-            .text(hiddenChannels + " of the member channels are temporary hidden due to blank content on their profile. They'll once appear when they release content.")
+            .text(hiddenChannels + " of the member channels are temporarily hidden due to blank content on their profile. They'll once appear when they release content.")
         )
     }
 }
