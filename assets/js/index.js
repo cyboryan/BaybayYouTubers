@@ -5,6 +5,10 @@
  * @link cyboryan.github.io
  */
 
+/**
+ * Initialization of global variables
+ */
+var hiddenChannels = 0;
 
 /**
  * Loads dataTable plugin after button click and shows the list while hiding the welcome screen
@@ -84,6 +88,14 @@ function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos
      */
     if(name.length > 25) name = name.substr(0, 25) + "...";
 
+    /**
+     * Don't show channels that don't have videos
+     */
+    if(totalVideos == 0) {
+        hiddenChannels++;
+        return 0; // terminate function
+    }
+
     // Create and supply row for every data
     $("#tableList").find('tbody')
     .append($('<tr>')
@@ -128,6 +140,18 @@ function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos
     );
 }
 
+function showNumberOfHiddenChannels()
+{
+    if(hiddenChannels > 0)
+    {
+        $("#tableList").after($("<p>")
+            .attr('class', 'mt-2 text-center')
+            .attr('style', 'font-size:12px')
+            .text(hiddenChannels + " of the member channels are temporary hidden due to blank content on their profile. They'll once appear when they release content.")
+        )
+    }
+}
+
 //...
 
 /**
@@ -163,7 +187,7 @@ $(document).ready(function()
     {
         key1 = "AIzaSyCwTZKgqu6ZaTMgd89r5wl5MQg_AVAsajs"; // down
         key2 = "AIzaSyBXPp-tif9_fP7lgvLxB7uZqftFzD7xlUw";
-        url = "https://www.googleapis.com/youtube/v3/channels?key=" + key2 + "&id=" + id + "&part=snippet,contentDetails,statistics";
+        url = "https://www.googleapis.com/youtube/v3/channels?key=" + key1 + "&id=" + id + "&part=snippet,contentDetails,statistics";
 
         $.get( url, {} )
         .done(function( data ) {
@@ -181,7 +205,11 @@ $(document).ready(function()
      */
     time = 7;
     setInterval(function(){
-        if(time == 0) dataTable();
+        if(time == 0)
+        {
+            dataTable();
+            showNumberOfHiddenChannels();
+        }
         time--;
         $('#time').text(time);
     }, 1000)
