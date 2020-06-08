@@ -118,6 +118,12 @@ function bindData(id, imageLink, name, totalSubscribers, totalViews, totalVideos
         return 0; // terminate function
     }
 
+    /**
+     * In case subscribers are hidden which will appear as 0,
+     * print hidden instead
+     */
+    if(totalSubscribers < 1) totalSubscribers = "Hidden";
+
     // Create and supply row for every data
     $("#tableList").find('tbody')
     .append($('<tr>')
