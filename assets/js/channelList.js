@@ -38,6 +38,9 @@ channelId = new Array(
     "UCOAVIUbLYCq84pdMHZZkLuw", // princess aicelle
     "UC_yDEeZQ119wW-ig92uo7rA", // jenelyn digman
     "UCnZPE5lIXRun3ca6PED-8eg", // mark film tv
+    
+    // Newly Added Members after launch of site
+    
     "UCz4TtrIdeVnNis9hQTsjY9w", // Ann Marie Augustine
     "UCF2OEYeORTtCFTfmeY6GyTA", // Goods YT - gefford neil roa godoy
     "UCzJdoWhBz_pDQW5n-qEtLQQ", // Ron Ny
