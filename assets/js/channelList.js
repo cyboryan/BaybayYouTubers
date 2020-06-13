@@ -46,5 +46,7 @@ channelId = new Array(
     "UCzJdoWhBz_pDQW5n-qEtLQQ", // Ron Ny
     "UCIWcVeoHS35gu9ytCEi73jg", // Baybay Pakatok
     "UCYDLRMsCqs1D1-uJfNi6dUQ", // Ang Maharlika (from Super Miko)
-    "UCHzHKGU3WsNuHJGw_z3KBGg" // Denzel Clavecillas - 2020/05/26
+    "UCHzHKGU3WsNuHJGw_z3KBGg", // Denzel Clavecillas - 2020/05/26
+    "UC0r6ptImfHFzGAYyDNvASeA", // Jem Libres - 2020/06/13
+    "UCh4WPuCzbiNUuPOvka_KScQ" // Jaziala Vlog - 2020/06/13
 );
