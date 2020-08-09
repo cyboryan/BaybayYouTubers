@@ -48,5 +48,7 @@ channelId = new Array(
     "UCYDLRMsCqs1D1-uJfNi6dUQ", // Ang Maharlika (from Super Miko)
     "UCHzHKGU3WsNuHJGw_z3KBGg", // Denzel Clavecillas - 2020/05/26
     "UC0r6ptImfHFzGAYyDNvASeA", // Jem Libres - 2020/06/13
-    "UCh4WPuCzbiNUuPOvka_KScQ" // Jaziala Vlog - 2020/06/13
+    "UCh4WPuCzbiNUuPOvka_KScQ", // Jaziala Vlog - 2020/06/13
+    "UCeG46GDZmOtDjq0gZscpAvA", // John Paul Lumakin - 2020/08/09
+    "UCpGCF4ndbY0F6aL7Epgk_fA" // Kabayan Amor - 2020/08/09
 );
